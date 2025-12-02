@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Se placer dans le bon dossier (adapter si besoin)
-cd ~/bwa_psbO_tools
+cd ~/Sol_Genomic_Mazatlan
 
 # Étape 1 : créer les dossiers si besoin
-mkdir -p complexity_stats
-mkdir -p data_filtered_post_bwa/final
+mkdir -p Outputs/complexity_stats
+mkdir -p Outputs/data_filtered_post_bwa/final
 
 # Étape 2 : extraire les stats de complexité
 for prefix in BP EP FP; do
@@ -32,4 +32,4 @@ for prefix in BP EP FP; do
   done
 done
 
-echo "✅ Filtrage terminé. Résultats dans data_filtered_post_bwa/final/"
+echo "✅ Filtrage terminé. Résultats dans Outputs/data_filtered_post_bwa"
