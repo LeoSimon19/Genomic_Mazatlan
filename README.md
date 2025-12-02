@@ -37,23 +37,32 @@ Ce fichier décrit :
 
 ## **3. Structure du projet**
 
-= Mettre l'aborescence
+= Mettre l'aborescence avant la fairisation ou un extrait, et expliquer comment on l'a rendu plus fair
 
 ```{bash}
-/data/
-    /raw_fastq/
-    /reference_db/
-    /metadata/
-    /intermediate/
-/scripts/
-    qc/
-    alignment/
-    taxonomy/
-/results/
-    qc_reports/
-    alignments/
-    counts/
-    taxonomy_profiles/
+├── Inputs
+│   ├── databases
+│   │   ├── psbO_20210825.fna
+│   │   └── psbO_taxonomy_map_fixed.tsv
+│   └── raw_data
+├── Outputs
+│   ├── bwa_output
+│   │   └── matched_ids
+│   ├── complexity_stats
+│   ├── data_filtered_post_bwa
+│   ├── index_psbO
+│   │   └── psbO_taxonomy_map_fixed.tsv
+│   └── taxonomic_profiles
+├── README.md
+├── Scripts
+│   ├── step0_taxonomy_map_creation.sh
+│   ├── step1_filtrage_complexity.sh
+│   ├── step2_run_bwa.sh
+│   ├── step3_sequence_count.sh
+│   ├── step4_analyze_composition_taxonomique.sh
+│   └── step5_profil_and_abundancy.sh
+└── Sol_Genomic_Mazatlan.Rproj
+
 ```
 
 ## **4. Dépendances et environnement**
