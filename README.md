@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 # **Titre du Stage**
+=======
+# Goated_Genomic_Mazatlan
+>>>>>>> 36740150906a50a872a7dbd2529686d9174e36cc
 
 ## [**Analyse métagénomique de la diversité photosynthétique (gène psbO) dans la Baie de Mazatlán et le Lagon Urias (Mexique)**]{.underline}
 
@@ -9,6 +13,7 @@ Il vise à rendre le pipeline plus **FAIR** (Findable, Accessible, Interoperable
 
 ## **1. Contexte scientifique**
 
+<<<<<<< HEAD
 Le projet utilise une approche métagénomique ciblée sur le gène **psbO**, permettant d’obtenir un aperçu fonctionnel de la diversité photosynthétique (procaryotes + eucaryotes) dans différents sites :
 
 -    **BP** : Stations de la Baie de Mazatlán
@@ -183,3 +188,6 @@ Superviseur :
 Laboratoire d'acceuil:
 
 ....
+=======
+
+>>>>>>> 36740150906a50a872a7dbd2529686d9174e36cc
