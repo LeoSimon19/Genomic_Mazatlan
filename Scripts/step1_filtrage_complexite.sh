@@ -24,8 +24,8 @@
 #   Outputs/data_filtered_post_bwa/final/<prefix>_<pair>_filtered.fastq
 #
 # DEPENDANCES :
-#   - seqkit  ≥ 2.3.0
-#   - awk (standard, POSIX)
+#   - seqkit Version 2.3.0
+#   - awk : Version GNU Awk 5.3.1
 #
 # FAIRNESS :
 #   - Le script documente ses étapes, formats, outils et versions attendues.

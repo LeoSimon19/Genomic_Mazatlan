@@ -40,7 +40,7 @@ mkdir -p Outputs/index_psbO
 
 
 ###############################################################################
-# AWK :
+# AWK : Version GNU Awk 5.3.1
 #   - Séparateur d’entrée = espace
 #   - Séparateur de sortie = tabulation
 #   - Pour chaque ligne commençant par '>' :
