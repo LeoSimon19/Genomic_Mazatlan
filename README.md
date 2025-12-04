@@ -20,11 +20,11 @@ Dresser un état des lieux de la structuration des données, scripts et fichiers
 
 Le projet utilise une approche métagénomique basée sur l’ADN environnemental (ADNe), ciblant l’assignation taxonomique de séquences comparées à une base de données du gène **psbO**, dans l’objectif d’obtenir un aperçu de la diversité des organismes planctoniques photosynthétiques (procaryotes + eucaryotes) et d’estimer leur abondance dans différents sites :
 
--    **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
+-   **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
 
--    **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
+-   **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
 
--    **FP (Fundo Photosynthetic)** : fond du lagon
+-   **FP (Fundo Photosynthetic)** : fond du lagon
 
 L’échantillonnage de l’ADNe a été réalisé à l’aide de bouteilles Niskin à 1 m de profondeur. Les extraits d’ADNe ont ensuite été séquencés (NGS, MacroGen ; paired-end 150 bp).
 
@@ -41,47 +41,7 @@ Cela rendait tout retour sur les données très fastidieux pour l’auteur, et q
 Cet état initial était donc très peu FAIR, notamment concernant les critères **Accessible**, **Interoperable** (vocabulaire non standardisé, absence de liens entre les données) et **Reusable**.
 
 Ci-dessous, un aperçu d’une infime partie de l’arborescence initiale.\
-├── psbO_db.4.bt2
-│ ├── psbO_db.rev.1.bt2
-│ ├── psbO_db.rev.2.bt2
-│ ├── ref_humangenom.1.bt2
-│ ├── ref_humangenom.2.bt2
-│ ├── ref_humangenom.3.bt2
-│ ├── ref_humangenom.4.bt2
-│ ├── ref_humangenom.rev.1.bt2
-│ └── ref_humangenom.rev.2.bt2
-├── bwa_psbO_tools
-│ ├── analyze_composition_taxonomique.sh
-│ ├── BP_1.fastq.gz -\> ../metagenomics_mzt/BP_1.fastq.gz
-│ ├── BP_2.fastq.gz -\> ../metagenomics_mzt/BP_2.fastq.gz
-│ ├── bwa_output
-│ │ ├── aligned_only
-│ │ │ ├── BP_aligned.sam
-│ │ │ ├── EP_aligned.sam
-│ │ │ └── FP_aligned.sam
-│ │ ├── BP_filtered.sam
-│ │ ├── BP_filtered_unique.sam
-│ │ ├── EP_filtered.sam
-│ │ ├── EP_filtered_unique.sam
-│ │ ├── FP_filtered.sam
-│ │ ├── FP_filtered_unique.sam
-│ │ └── matched_ids
-..........
-│ ├── matched_ids
-│ │ ├── BP_ref_hits.txt
-│ │ ├── EP_ref_hits.txt
-│ │ └── FP_ref_hits.txt
-│ ├── psbO_20210825.fna -\> /botete/solane/databases/psbO_20210825.fna
-│ ├── psbO_taxonomy_map.tsv -\> index_psbO/taxonomy_map/psbO_taxonomy_map.tsv
-│ ├── run_bwa.sh
-│ └── taxonomic_profiles
-│ ├── BP_taxonomic_profile_newtest.tsv
-│ ├── BP_taxonomic_profile.tsv
-│ ├── EP_taxonomic_profile_newtest.tsv
-│ ├── EP_taxonomic_profile.tsv
-│ ├── FP_taxonomic_profile_newtest.tsv
-│ └── FP_taxonomic_profile.tsv
-..........
+├── psbO_db.4.bt2 │ ├── psbO_db.rev.1.bt2 │ ├── psbO_db.rev.2.bt2 │ ├── ref_humangenom.1.bt2 │ ├── ref_humangenom.2.bt2 │ ├── ref_humangenom.3.bt2 │ ├── ref_humangenom.4.bt2 │ ├── ref_humangenom.rev.1.bt2 │ └── ref_humangenom.rev.2.bt2 ├── bwa_psbO_tools │ ├── analyze_composition_taxonomique.sh │ ├── BP_1.fastq.gz -\> ../metagenomics_mzt/BP_1.fastq.gz │ ├── BP_2.fastq.gz -\> ../metagenomics_mzt/BP_2.fastq.gz │ ├── bwa_output │ │ ├── aligned_only │ │ │ ├── BP_aligned.sam │ │ │ ├── EP_aligned.sam │ │ │ └── FP_aligned.sam │ │ ├── BP_filtered.sam │ │ ├── BP_filtered_unique.sam │ │ ├── EP_filtered.sam │ │ ├── EP_filtered_unique.sam │ │ ├── FP_filtered.sam │ │ ├── FP_filtered_unique.sam │ │ └── matched_ids .......... │ ├── matched_ids │ │ ├── BP_ref_hits.txt │ │ ├── EP_ref_hits.txt │ │ └── FP_ref_hits.txt │ ├── psbO_20210825.fna -\> /botete/solane/databases/psbO_20210825.fna │ ├── psbO_taxonomy_map.tsv -\> index_psbO/taxonomy_map/psbO_taxonomy_map.tsv │ ├── run_bwa.sh │ └── taxonomic_profiles │ ├── BP_taxonomic_profile_newtest.tsv │ ├── BP_taxonomic_profile.tsv │ ├── EP_taxonomic_profile_newtest.tsv │ ├── EP_taxonomic_profile.tsv │ ├── FP_taxonomic_profile_newtest.tsv │ └── FP_taxonomic_profile.tsv ..........
 
 Une FAIRISATION, soit ici une refonte structurée de l’organisation des dossiers était absolument nécessaire.
 
