@@ -396,31 +396,43 @@ done
 
 ## **9. Contact et licence**
 
-Afin d'améliorer le critère FINDABLE, nous référencons ici des informations concernant les acteurs et établissements ayant participé à ce stage.
+Afin d'améliorer le critère FINDABLE, nous référencons ici d'abord les auteurs de ce projet de FAIRISATION, puis des informations concernant les acteurs et établissements ayant participé au stage de Solane.
 
-### **Contacts principaux**
+### **Contacts du Projet de Fairisation**
 
--    **Autreur/ Développeur des scripts :**\
+-   Auteurs:
+
+    -   Solane Cacao-Martins-Février — *Solane.cacao\@gmail.com*
+
+    -   Léo Simon — Simonleo206\@gmail.com
+
+    -   Elwann Laurent — Laurentelwann\@gmail.com
+
+### **Contacts principaux du stage**
+
+-   **Autreur/ Développeur des scripts :**\
     Solane Cacao-Martins-Février — *Solane.cacao\@gmail.com*
 
--    **Superviseure scientifique :**\
+-   **Superviseure scientifique :**\
     Dr. Tomasa Del Carmen Cuéllar Martinez — *tcuellar\@ola.icmyl.unam.mx*
 
-### **Institution d’accueil**
+### **Institution d’accueil du Stage**
 
 **Instituto de Ciencias del Mar y Limnología (ICML)** – UNAM\
 Av. Joel Montes Camarena S/N, Apartado Postal 811\
 C.P. 82040, Mazatlán, Sinaloa, México\
 Tel : +52 (669) 985-28-45
 
+### Données du stage
+
 Les données produites durant ce stage sont **non publiques / soumises à restrictions**.\
 Elles ne peuvent pas être redistribuées sans accord écrit de :
 
--    l’ICML-UNAM,
+-   l’ICML-UNAM,
 
--    et de la superviseure Dr. Cuéllar Martinez.
+-   et de la superviseure Dr. Cuéllar Martinez.
 
-Pour toute demande d'accès aux données, veuillez contacter les responsables listés ci-dessus.
+Pour toute demande d'accès aux données, il faudrait contacter les responsables listés ci-dessus.
 
 **Perspectives FAIR :**\
 Pour renforcer encore la conformité FAIR, nous aurions pu ajouter une **licence explicite** aux scripts et aux jeux de données, ainsi que renseigner les **identifiants ORCID** des contributeurs, **si ceux-ci avaient existé et été disponibles**. Cela aurait amélioré la traçabilité, l’attribution et la réutilisation des ressources.
