@@ -20,11 +20,11 @@ Dresser un état des lieux de la structuration des données, scripts et fichiers
 
 Le projet utilise une approche métagénomique basée sur l’ADN environnemental (ADNe), ciblant l’assignation taxonomique de séquences comparées à une base de données du gène **psbO**, dans l’objectif d’obtenir un aperçu de la diversité des organismes planctoniques photosynthétiques (procaryotes + eucaryotes) et d’estimer leur abondance dans différents sites :
 
--   **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
+-    **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
 
--   **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
+-    **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
 
--   **FP (Fundo Photosynthetic)** : fond du lagon
+-    **FP (Fundo Photosynthetic)** : fond du lagon
 
 L’échantillonnage de l’ADNe a été réalisé à l’aide de bouteilles Niskin à 1 m de profondeur. Les extraits d’ADNe ont ensuite été séquencés (NGS, MacroGen ; paired-end 150 bp).
 
@@ -41,7 +41,47 @@ Cela rendait tout retour sur les données très fastidieux pour l’auteur, et q
 Cet état initial était donc très peu FAIR, notamment concernant les critères **Accessible**, **Interoperable** (vocabulaire non standardisé, absence de liens entre les données) et **Reusable**.
 
 Ci-dessous, un aperçu d’une infime partie de l’arborescence initiale.\
-├── psbO_db.4.bt2 │ ├── psbO_db.rev.1.bt2 │ ├── psbO_db.rev.2.bt2 │ ├── ref_humangenom.1.bt2 │ ├── ref_humangenom.2.bt2 │ ├── ref_humangenom.3.bt2 │ ├── ref_humangenom.4.bt2 │ ├── ref_humangenom.rev.1.bt2 │ └── ref_humangenom.rev.2.bt2 ├── bwa_psbO_tools │ ├── analyze_composition_taxonomique.sh │ ├── BP_1.fastq.gz -\> ../metagenomics_mzt/BP_1.fastq.gz │ ├── BP_2.fastq.gz -\> ../metagenomics_mzt/BP_2.fastq.gz │ ├── bwa_output │ │ ├── aligned_only │ │ │ ├── BP_aligned.sam │ │ │ ├── EP_aligned.sam │ │ │ └── FP_aligned.sam │ │ ├── BP_filtered.sam │ │ ├── BP_filtered_unique.sam │ │ ├── EP_filtered.sam │ │ ├── EP_filtered_unique.sam │ │ ├── FP_filtered.sam │ │ ├── FP_filtered_unique.sam │ │ └── matched_ids .......... │ ├── matched_ids │ │ ├── BP_ref_hits.txt │ │ ├── EP_ref_hits.txt │ │ └── FP_ref_hits.txt │ ├── psbO_20210825.fna -\> /botete/solane/databases/psbO_20210825.fna │ ├── psbO_taxonomy_map.tsv -\> index_psbO/taxonomy_map/psbO_taxonomy_map.tsv │ ├── run_bwa.sh │ └── taxonomic_profiles │ ├── BP_taxonomic_profile_newtest.tsv │ ├── BP_taxonomic_profile.tsv │ ├── EP_taxonomic_profile_newtest.tsv │ ├── EP_taxonomic_profile.tsv │ ├── FP_taxonomic_profile_newtest.tsv │ └── FP_taxonomic_profile.tsv ..........
+├── psbO_db.4.bt2
+│ ├── psbO_db.rev.1.bt2
+│ ├── psbO_db.rev.2.bt2
+│ ├── ref_humangenom.1.bt2
+│ ├── ref_humangenom.2.bt2
+│ ├── ref_humangenom.3.bt2
+│ ├── ref_humangenom.4.bt2
+│ ├── ref_humangenom.rev.1.bt2
+│ └── ref_humangenom.rev.2.bt2
+├── bwa_psbO_tools
+│ ├── analyze_composition_taxonomique.sh
+│ ├── BP_1.fastq.gz -\> ../metagenomics_mzt/BP_1.fastq.gz
+│ ├── BP_2.fastq.gz -\> ../metagenomics_mzt/BP_2.fastq.gz
+│ ├── bwa_output
+│ │ ├── aligned_only
+│ │ │ ├── BP_aligned.sam
+│ │ │ ├── EP_aligned.sam
+│ │ │ └── FP_aligned.sam
+│ │ ├── BP_filtered.sam
+│ │ ├── BP_filtered_unique.sam
+│ │ ├── EP_filtered.sam
+│ │ ├── EP_filtered_unique.sam
+│ │ ├── FP_filtered.sam
+│ │ ├── FP_filtered_unique.sam
+│ │ └── matched_ids
+..........
+│ ├── matched_ids
+│ │ ├── BP_ref_hits.txt
+│ │ ├── EP_ref_hits.txt
+│ │ └── FP_ref_hits.txt
+│ ├── psbO_20210825.fna -\> /botete/solane/databases/psbO_20210825.fna
+│ ├── psbO_taxonomy_map.tsv -\> index_psbO/taxonomy_map/psbO_taxonomy_map.tsv
+│ ├── run_bwa.sh
+│ └── taxonomic_profiles
+│ ├── BP_taxonomic_profile_newtest.tsv
+│ ├── BP_taxonomic_profile.tsv
+│ ├── EP_taxonomic_profile_newtest.tsv
+│ ├── EP_taxonomic_profile.tsv
+│ ├── FP_taxonomic_profile_newtest.tsv
+│ └── FP_taxonomic_profile.tsv
+..........
 
 Une FAIRISATION, soit ici une refonte structurée de l’organisation des dossiers était absolument nécessaire.
 
@@ -260,105 +300,49 @@ Pour FAIRISER les données de sorties....
 
 Pour la FAIRISATION, chaques scripts a été renommer, et leur ordre d'utilisation bien énuméré. Leur contenue a également été largement améliorer, avec des annotations claires pour chaques étapes du scripts et leur fonctions. De plus, les différents scripts utilisés et retravaillés sont énumérés et leur fonction expliqué ci dessous:
 
--   **step0_taxonomy_map_creation.sh =** Génère une table de correspondance entre les identifiants des séquences psbO et leur lignée taxonomique à partir du fichier FASTA. Cette *taxonomy map* est utilisée pour l’assignation taxonomique dans les étapes suivantes.
+-   step0_taxonomy_map_creation.sh =
 
--   **step1_filtrage_complexity.sh =** Calcule la complexité de chaque read à l’aide de `seqkit fx2tab` et filtre les reads présentant une complexité ≥ 0,75. Produit un FASTQ contenant uniquement les reads conservés.
+-   step1_filtrage_complexity.sh =
 
--   **step2_run_bwa.sh =** Aligne les reads filtrés (R1/R2) sur la référence psbO dédupliquée (`psbO_ref_unique.fna`) avec BWA-MEM. Les paramètres utilisés sont ajustés pour tolérer une forte variabilité des séquences environnementales.
+-   step2_run_bwa.sh =
 
--   **step3_sequence_count.sh =** Convertit les fichiers SAM produits par BWA en fichiers BAM triés et indexés, puis génère les statistiques de comptage par contig via `samtools idxstats`.
+-   step3_sequence_count.sh =
 
--   **step4_analyze_composition_taxonomique.sh =** Fusionne les données de comptage (`idxstats`) avec la *taxonomy map* afin de produire un profil d’abondance par taxon.
+-   step4_analyze_composition_taxonomique.sh =
 
-Un exemple d'un scirpt retravaillé est montré ci-dessous. Nous vous invitons à regarder le fichier des scripts retravailler dans le Github, afin de voir l'amélioration et la FAIRISATION effectué.
+-   step5_profil_and_abundancy.sh =
 
-```{python}
-###############################################################################
-# SCRIPT : step1_filtrage_complexite.sh
-#
-# OBJECTIF :
-#   - Calculer la complexité de chaque read (via seqkit fx2tab).
-#   - Filtrer les reads dont la complexité est ≥ 0.75.
-#   - Extraire uniquement ces reads "complexes" dans un nouveau FASTQ.
-#
-# CONTEXTE :
-#   - Le filtrage de complexité permet d’éliminer les séquences peu informatives
-#     (homopolymères, faible diversité, artefacts PCR…).
-#   - Se base sur seqkit, option -i pour calculer l'indice de complexité.
-#
-# INPUTS ATTENDUS :
-#   data_filtered_post_bwa/<prefix>_<pair>_min70.fastq
-#   Exemple : BP_1_min70.fastq
-#   Données provenant de l'étape post-BWA.
-#
-# OUTPUTS :
-#   Outputs/complexity_stats/<prefix>_<pair>_stats.tsv      (statistiques complètes)
-#   Outputs/complexity_stats/<prefix>_<pair>_ids.txt        (IDs filtrés ≥ 0.75)
-#   Outputs/data_filtered_post_bwa/final/<prefix>_<pair>_filtered.fastq
-#
-# DEPENDANCES :
-#   - seqkit Version 2.3.0
-#   - awk : Version GNU Awk 5.3.1
-#
-# FAIRNESS :
-#   - Le script documente ses étapes, formats, outils et versions attendues.
-#   - Les chemins sont explicites et versionnables.
-#   - Les étapes sont déterministes et reproductibles.
-#
-# AUTEUR :
-#   <CACAO M.F Solane> — <03/12/2025>
-###############################################################################
+Chaque script utilisé dans la mise en place du pipeline et la structuration des données est détaillé ci-dessous :
 
+### **namescript1.R – Quality Control**
 
-### ------------------------------------------------------------------------ ###
-### Étape 0 : Configuration générale
-### ------------------------------------------------------------------------ ###
+-   **Input** : fichiers FASTQ
 
-# Se placer dans l'espace de travail (adapter si besoin)
-cd ~/Workspace || {
-  echo "❌ ERREUR : Impossible d'accéder à ~/Workspace"
-  exit 1
-}
+-   **Output** : rapports FastQC
 
-# Préfixes correspondant aux échantillons (adapter si besoin)
-PREFIXES=("BP" "EP" "FP")
+-   **Fonction** : contrôle de qualité, filtrage \<70 nt
 
-# Valeur seuil de complexité
-THRESHOLD=0.75
-
-
-### ------------------------------------------------------------------------ ###
-### Étape 1 : Préparation des dossiers de sortie
-### ------------------------------------------------------------------------ ###
-mkdir -p Outputs/complexity_stats
-mkdir -p Outputs/data_filtered_post_bwa/final
-
-
-### ------------------------------------------------------------------------ ###
-### Étape 2 : Extraction des stats de complexité
-### seqkit fx2tab -n -i :
-###   -n : imprime l'ID
-###   -i : calcule & imprime l’indice de complexité (Shannon)
-### ------------------------------------------------------------------------ ###
-echo "### Extraction des statistiques de complexité ###"
-
-for prefix in "${PREFIXES[@]}"; do
-  for pair in 1 2; do
-
-    input="Outputs/data_filtered_post_bwa/${prefix}_${pair}_min70.fastq"
-    output_stats="Outputs/complexity_stats/${prefix}_${pair}_stats.tsv"
-
-    echo "➡ Calcul de la complexité pour ${prefix}_${pair}..."
-
-    if [[ ! -f "$input" ]]; then
-      echo "⚠ Fichier introuvable : $input — ignoré."
-      continue
-    fi
-
-    seqkit fx2tab -n -i "$input" > "$output_stats"
-  done
-done
+```         
+### **namescript2.sh – Indexation de la base psbO**
 ```
+
+-   **Input** : psb_db_unique.fasta
+
+-   **Output** : fichiers d’index BWA
+
+-   **Fonction** : préparation pour l'alignement
+
+### **namescript3.sh – Alignement BWA + comptage**
+
+-   **Input** : FASTQ filtrés
+
+-   **Output** : .sam, .bam, idxstats.txt
+
+-   **Commandes** : `bwa mem …` puis `samtools idxstats`
+
+-   **Fonction** :
+
+*(à compléter avec des exemples de scripts ???)*
 
 ## **7. Pipeline analytique**
 
