@@ -23,11 +23,11 @@ Dresser un état des lieux de la structuration des données, scripts et fichiers
 
 Le projet utilise une approche métagénomique basée sur l’ADN environnemental (ADNe), ciblant l’assignation taxonomique de séquences comparées à une base de données du gène **psbO**, dans l’objectif d’obtenir un aperçu de la diversité des organismes planctoniques photosynthétiques (procaryotes + eucaryotes) et d’estimer leur abondance dans différents sites :
 
--   **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
+-    **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
 
--   **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
+-    **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
 
--   **FP (Fundo Photosynthetic)** : fond du lagon
+-    **FP (Fundo Photosynthetic)** : fond du lagon
 
 L’échantillonnage de l’ADNe a été réalisé à l’aide de bouteilles Niskin à 1 m de profondeur. Les extraits d’ADNe ont ensuite été séquencés (NGS, MacroGen ; paired-end 150 bp).
 
@@ -389,17 +389,17 @@ L’ensemble de ces améliorations permet de rendre le pipeline **plus FAIR**, n
 
 Les scripts retravaillés sont listés ci-dessous, accompagnés d’une brève description de leur fonction :
 
--   **step0_taxonomy_map_creation.sh =** Génère une table de correspondance entre les identifiants des séquences psbO et leur lignée taxonomique à partir du fichier FASTA. Cette *taxonomy map* est utilisée pour l’assignation taxonomique dans les étapes suivantes.
+-   step0_taxonomy_map_creation.sh =
 
--   **step1_filtrage_complexity.sh =** Calcule la complexité de chaque read à l’aide de `seqkit fx2tab` et filtre les reads présentant une complexité ≥ 0,75. Produit un FASTQ contenant uniquement les reads conservés.
+-   step1_filtrage_complexity.sh =
 
--   **step2_run_bwa.sh =** Aligne les reads filtrés (R1/R2) sur la référence psbO dédupliquée (`psbO_ref_unique.fna`) avec BWA-MEM. Les paramètres utilisés sont ajustés pour tolérer une forte variabilité des séquences environnementales.
+-   step2_run_bwa.sh =
 
--   **step3_sequence_count.sh =** Convertit les fichiers SAM produits par BWA en fichiers BAM triés et indexés, puis génère les statistiques de comptage par contig via `samtools idxstats`.
+-   step3_sequence_count.sh =
 
--   **step4_analyze_composition_taxonomique.sh =** Fusionne les données de comptage (`idxstats`) avec la *taxonomy map* afin de produire un profil d’abondance par taxon.
+-   step4_analyze_composition_taxonomique.sh =
 
-Un exemple d'un scirpt retravaillé est montré ci-dessous. Nous vous invitons à regarder le fichier des scripts retravailler dans le Github, afin de voir l'amélioration et la FAIRISATION effectué sur l'ensemble des scripts.
+-   step5_profil_and_abundancy.sh =
 
 ```{python}
 ###############################################################################
@@ -421,19 +421,13 @@ Un exemple d'un scirpt retravaillé est montré ci-dessous. Nous vous invitons �
 #   <CACAO M.F Solane> — <03/12/2025>
 ###############################################################################
 
+### **namescript1.R – Quality Control**
 
-### ------------------------------------------------------------------------ ###
-### Étape 0 : Configuration générale
-### ------------------------------------------------------------------------ ###
+-   **Input** : fichiers FASTQ
 
-# Se placer dans l'espace de travail (adapter si besoin)
-cd ~/Workspace || {
-  echo "❌ ERREUR : Impossible d'accéder à ~/Workspace"
-  exit 1
-}
+-   **Output** : rapports FastQC
 
-# Préfixes correspondant aux échantillons (adapter si besoin)
-PREFIXES=("BP" "EP" "FP")
+-   **Fonction** : contrôle de qualité, filtrage \<70 nt
 
 # Valeur seuil de complexité
 THRESHOLD=0.75
@@ -501,6 +495,14 @@ Voici le déroulé du pipeline FAIRisé :
     = Croisement : *counts* + taxonomy_map → abondances taxonomiques.
 
 ## **9. Contact et licence**
+
+Scripts libres / données restreintes.\
+Contact : Solane Cacao-Martins-Février – email…\
+Superviseur :
+
+Laboratoire d'acceuil:
+
+....
 
 Afin d'améliorer le critère FINDABLE, nous référencons ici d'abord les auteurs de ce projet de FAIRISATION, puis des informations concernant les acteurs et établissements ayant participé au stage de Solane.
 
