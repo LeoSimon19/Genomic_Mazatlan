@@ -30,7 +30,7 @@ L’échantillonnage de l’ADNe a été réalisé à l’aide de bouteilles Nis
 
 Pour plus d’informations sur les protocoles utilisés durant le stage, veuillez consulter le document de métadonnées disponible dans le dépôt GitHub. Celui-ci a été clarifié et enrichi dans le cadre du processus de FAIRISATION.
 
--\> (Lien vers tableau métadonnées)
+-\> [📄 Accéder au dossier Metadonnees](Metadonnees)
 
 ## 2. Structure du projet initial
 
