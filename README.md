@@ -4,89 +4,98 @@
 
 ## [**Analyse métagénomique de la diversité photosynthétique (gène psbO) dans la Baie de Mazatlán et le Lagon Urias (Mexique)**]{.underline}
 
-Ce README documente le processus de FAIRISATION de l’ensemble des scripts, données, métadonnées et étapes analytiques utilisés durant le stage de Master 1 de **Solane Cacao-Martins-Février** au laboratoire XXX (Mazatlán, Mexique).\
-Il vise à rendre le pipeline plus **FAIR** (Findable, Accessible, Interoperable, Reusable) et à faciliter la reproductibilité des analyses. En expliquant nottament les différentes étapes de FAIRISATION mises en place dans cette démarche. Tout le projet n'a pas pu être entièrement FAIRISE, mais ce Readme sert à montrer et expliquer les différentes choses qui ont pu l'être.
+Ce README documente le processus de FAIRISATION de l’ensemble des scripts, données, métadonnées et étapes analytiques utilisés durant le stage de Master 1 de Solane Cacao-Martins-Février au laboratoire de l’UNAM (Mazatlán, Mexique).\
+Il vise à rendre le pipeline plus FAIR (Findable, Accessible, Interoperable, Reusable), en expliquant notamment les différentes étapes mises en place pour passer d’un état initial « non FAIR » à un état amélioré.\
+Tout le projet n’a pas pu être entièrement traité, mais ce README présente et explique les éléments qui ont pu être clarifiés et rendus plus FAIR.
 
-La partie une présente le context général du stage et l'état initial "non-FAIR" de certains points, tandis que la partie deux présente des objets qui ont été amélioré dans le but de FAIRISATOIN.
+La **PARTIE 1** présente le contexte général du stage et l’état initial « non FAIR » de certains aspects, tandis que la **PARTIE 2** décrit les améliorations réalisées dans le cadre de la FAIRISATION.
 
-# **PARTIE 1 - ETAT INITIAL (Non-FAIR)**
+# PARTIE 1 — ÉTAT INITIAL (Non FAIR)
 
-But : décrire objectivement comment étaient les données, scripts, fichiers, et pourquoi ça n’était PAS FAIR.
+### Objectif
 
-## **1. Contexte scientifique**
+Dresser un état des lieux de la structuration des données, scripts et fichiers, et expliquer pourquoi ils ne respectaient pas les principes FAIR.
 
-Le projet utilise une approche métagénomique ciblée sur le gène **psbO**, dans l'objectif d’obtenir un aperçu fonctionnel de la diversité photosynthétique (procaryotes + eucaryotes) dans différents sites :
+## 1. Contexte scientifique
 
--   **BP** : Stations de la Baie de Mazatlán
+Le projet utilise une approche métagénomique basée sur l’ADN environnemental (ADNe), ciblant l’assignation taxonomique de séquences comparées à une base de données du gène **psbO**, dans l’objectif d’obtenir un aperçu de la diversité des organismes planctoniques photosynthétiques (procaryotes + eucaryotes) et d’estimer leur abondance dans différents sites :
 
--   **EP** : Entrée du lagon (zone anthropisée)
+-    **BP (Bahía Photosynthetic)** : stations de la Baie de Mazatlán
 
--   **FP** : Fond du lagon
+-    **EP (Entrada Photosynthetic)** : entrée du lagon (zone anthropisée)
 
-L’échantillonnage a été effectué à l’aide de bouteille Niskin à 1 m de profondeur à . Les extraits ADN ont été séquencés (NGS, MacroGen ; paired-end 150 bp). Pour plus d'informations concernant les protocoles utilisés durant le stage, nous vous invitons à vous référer au document de métadonnées disponible dans notre dossier github. Ce dernier que nous avons amélioré et précisé dans le processus de FAIRISATION.
+-    **FP (Fundo Photosynthetic)** : fond du lagon
 
-## 2. Structure du projet intitial
+L’échantillonnage de l’ADNe a été réalisé à l’aide de bouteilles Niskin à 1 m de profondeur. Les extraits d’ADNe ont ensuite été séquencés (NGS, MacroGen ; paired-end 150 bp).
 
-L'arborescence des dossiers du stages était organisé de facon très dispersé avec un très grands nombres de fichiers et dossier dans tous les sens. Par exemple, l'environnement de travail de Solane comprenaient 590 répertoires et 4726 fichiers différents. Ce qui rendait pour l'auteur du projet un replongement dans les donnnées très fastideux, rendant cette tâche pour une personne extérieur absolument impossible. Ce qui est en fait très peu FAIR, nottament sur les trois critères Accessible, Interoperable et Reusable.
+Pour plus d’informations sur les protocoles utilisés durant le stage, veuillez consulter le document de métadonnées disponible dans le dépôt GitHub. Celui-ci a été clarifié et enrichi dans le cadre du processus de FAIRISATION.
 
-Voyez ci-dessous, une capture d'écran d'une infime partie de l'arborescence du projet intial, infime car celle-etait gigantesque.
+-\> (Lien vers tableau métadonnées)
 
-```         
+## 2. Structure du projet initial
+
+L’arborescence des dossiers du stage était organisée de manière très dispersée, avec un grand nombre de fichiers et de répertoires éparpillés sans logique apparente.\
+Par exemple, l’environnement de travail de Solane comprenait [**590 répertoires** et **4 726 fichiers** différents.]{.underline}
+
+Cela rendait tout retour sur les données très fastidieux pour l’auteur, et quasiment impossible pour une personne extérieure.\
+Cet état initial était donc très peu FAIR, notamment concernant les critères **Accessible**, **Interoperable** (vocabulaire non standardisé, absence de liens entre les données) et **Reusable**.
+
+Ci-dessous, un aperçu d’une infime partie de l’arborescence initiale.\
 ├── psbO_db.4.bt2
-│   ├── psbO_db.rev.1.bt2
-│   ├── psbO_db.rev.2.bt2
-│   ├── ref_humangenom.1.bt2
-│   ├── ref_humangenom.2.bt2
-│   ├── ref_humangenom.3.bt2
-│   ├── ref_humangenom.4.bt2
-│   ├── ref_humangenom.rev.1.bt2
-│   └── ref_humangenom.rev.2.bt2
+│ ├── psbO_db.rev.1.bt2
+│ ├── psbO_db.rev.2.bt2
+│ ├── ref_humangenom.1.bt2
+│ ├── ref_humangenom.2.bt2
+│ ├── ref_humangenom.3.bt2
+│ ├── ref_humangenom.4.bt2
+│ ├── ref_humangenom.rev.1.bt2
+│ └── ref_humangenom.rev.2.bt2
 ├── bwa_psbO_tools
-│   ├── analyze_composition_taxonomique.sh
-│   ├── BP_1.fastq.gz -> ../metagenomics_mzt/BP_1.fastq.gz
-│   ├── BP_2.fastq.gz -> ../metagenomics_mzt/BP_2.fastq.gz
-│   ├── bwa_output
-│   │   ├── aligned_only
-│   │   │   ├── BP_aligned.sam
-│   │   │   ├── EP_aligned.sam
-│   │   │   └── FP_aligned.sam
-│   │   ├── BP_filtered.sam
-│   │   ├── BP_filtered_unique.sam
-│   │   ├── EP_filtered.sam
-│   │   ├── EP_filtered_unique.sam
-│   │   ├── FP_filtered.sam
-│   │   ├── FP_filtered_unique.sam
-│   │   └── matched_ids
+│ ├── analyze_composition_taxonomique.sh
+│ ├── BP_1.fastq.gz -\> ../metagenomics_mzt/BP_1.fastq.gz
+│ ├── BP_2.fastq.gz -\> ../metagenomics_mzt/BP_2.fastq.gz
+│ ├── bwa_output
+│ │ ├── aligned_only
+│ │ │ ├── BP_aligned.sam
+│ │ │ ├── EP_aligned.sam
+│ │ │ └── FP_aligned.sam
+│ │ ├── BP_filtered.sam
+│ │ ├── BP_filtered_unique.sam
+│ │ ├── EP_filtered.sam
+│ │ ├── EP_filtered_unique.sam
+│ │ ├── FP_filtered.sam
+│ │ ├── FP_filtered_unique.sam
+│ │ └── matched_ids
 ..........
-│   ├── matched_ids
-│   │   ├── BP_ref_hits.txt
-│   │   ├── EP_ref_hits.txt
-│   │   └── FP_ref_hits.txt
-│   ├── psbO_20210825.fna -> /botete/solane/databases/psbO_20210825.fna
-│   ├── psbO_taxonomy_map.tsv -> index_psbO/taxonomy_map/psbO_taxonomy_map.tsv
-│   ├── run_bwa.sh
-│   └── taxonomic_profiles
-│       ├── BP_taxonomic_profile_newtest.tsv
-│       ├── BP_taxonomic_profile.tsv
-│       ├── EP_taxonomic_profile_newtest.tsv
-│       ├── EP_taxonomic_profile.tsv
-│       ├── FP_taxonomic_profile_newtest.tsv
-│       └── FP_taxonomic_profile.tsv
- ..........
-```
+│ ├── matched_ids
+│ │ ├── BP_ref_hits.txt
+│ │ ├── EP_ref_hits.txt
+│ │ └── FP_ref_hits.txt
+│ ├── psbO_20210825.fna -\> /botete/solane/databases/psbO_20210825.fna
+│ ├── psbO_taxonomy_map.tsv -\> index_psbO/taxonomy_map/psbO_taxonomy_map.tsv
+│ ├── run_bwa.sh
+│ └── taxonomic_profiles
+│ ├── BP_taxonomic_profile_newtest.tsv
+│ ├── BP_taxonomic_profile.tsv
+│ ├── EP_taxonomic_profile_newtest.tsv
+│ ├── EP_taxonomic_profile.tsv
+│ ├── FP_taxonomic_profile_newtest.tsv
+│ └── FP_taxonomic_profile.tsv
+..........
 
-Une FAIRISATION de cette arborescence avec un exemple de départ et des parties bien disctinctes est absolument nécessaire.
+Une FAIRISATION, soit ici une refonte structurée de l’organisation des dossiers était absolument nécessaire.
 
-## **3. Dépendances et environnement**
+## 3. Dépendances et environnement
 
-Les outils informatiques utilisés tel que les logiciels, les versions de ces logiciels, les langages de codes etc, n'étaient pas décrit. Ce qui n'est pas FAIR du tout. Dans la deuxième partie de ce Read me nous avons donc essayé de préciser le plus de choses concernant les environnement utilisés que possible.
+Les outils utilisés (logiciels, versions, langages, dépendances, etc.) n’étaient pas documentés.\
+Dans la deuxième partie de ce README, nous avons tenté de préciser autant que possible les environnements et dépendances nécessaires à l’exécution du pipeline.
 
 ## 4. Données
 
-### 4.1 Données d'entrées (input)
+### 4.1 Données d’entrée (input)
 
-Les données d'entrées sont très conséquentes et proviennent des séquencages réalisés via les échantillons Niskin collectés lors du stage.\
-Elles comprennent **6 fichiers .fastq.gz** non diffusables :
+Les données d’entrée proviennent des séquençages des échantillons collectés lors du stage.\
+Elles comprennent **6 fichiers .fastq.gz non diffusables** :
 
 -   BP1.fastq.gz
 
@@ -100,13 +109,33 @@ Elles comprennent **6 fichiers .fastq.gz** non diffusables :
 
 -   FP2.fastq.gz
 
-**Accès :** stockés sur le serveur du laboratoire de l'ANOM à Mazatlán , avec un accès restreint.
+**Accès :** stockés sur le serveur du laboratoire de l’UNAM à Mexico City, avec un accès restreint.
 
-Le fait qu'il ne soient pas difusables et restreint sur le serveur du laboratoire n'est pas FAIR. De plus leur nomination ne sont pas claires pour quelqu'un extèrieur au projet, de plus il n'y a pas d'information de types métadonnées, expliquant l'origine et le contenu de ces fichiers.
+Plusieurs problèmes les rendent non FAIR :
 
-### 4.2 Données de sorties (output)
+-   Non diffusables et accès restreint
 
-Les fichiers de données sortantes n'étaient pas très claires, avec des noms peu compréhensible, les formats non informés, et pas d'explication sur l'utilité de chaques sortie. Ci-dessous un exemple des noms des anciens scripts:
+<!-- -->
+
+-   Noms trop peu explicites pour quelqu’un d’extérieur
+
+<!-- -->
+
+-   Absence de métadonnées décrivant l’origine, les conditions d’échantillonnage ou le contenu
+
+### 4.2 Données de sortie (output)
+
+Les fichiers produits lors des traitements n’étaient pas clairement identifiés.\
+Retrouver les sorties pertinentes pour l’analyse était complexe, ce qui rendait la reproductibilité quasi impossible.\
+Les obstacles principaux :
+
+-   Noms peu compréhensibles
+
+-   Formats non documentés ;
+
+-   Absence d’explications sur le rôle des fichiers générés.
+
+Ci-dessous, un exemple d’anciens noms de scripts (non FAIR).
 
 |                       |
 |-----------------------|
@@ -116,11 +145,25 @@ Les fichiers de données sortantes n'étaient pas très claires, avec des noms p
 | BP1_idxstats.txt      |
 | taxonomy_BP1.csv      |
 
-## **5. Scripts**
+## 5. Scripts
 
-Plusieurs aspects des scripts les rendaient non FAIR. Leur noms n'étaient pas claires, nottament n'indiquant pas leur ordre d'utilisationdans la formation de la pipeline. La fonction de chaque script n'était pas précisé. De plus, les scripts en eux mêmes étaient très difficilement lisible, avec peu d'annotations et donc peu compréhensible, pour toute personne extèrieur mais aussi par l'auteur lui même. Rendant très compliqué leur réutilisations.
+Plusieurs éléments rendaient les scripts non FAIR :
 
-Exemple du contenue d'un des anciens scripts:
+-   Noms peu explicites,
+
+-   Ordre d’utilisation non indiqué,
+
+-   Absence de description de leur fonction,
+
+-   Très peu de commentaires,
+
+-   Lisibilité réduite,
+
+-   Difficilement compréhensibles pour quelqu’un d’extérieur… voire pour l’auteur après quelques mois.
+
+Cela rendait leur **réutilisation** particulièrement compliquée.
+
+Exemple du contenu d’un ancien script :
 
 ```{python}
 #!/bin/bash
@@ -226,7 +269,7 @@ Listes à compléter selon ton stage des versions et logiciels utilisés
 |            | x.x                          |
 | Packages R | dplyr x.x, ggplot2 x.x, etc. |
 
-## **4. Données** 
+## **4. Données**
 
 ### **4.1 Données d'entrées (input)**
 
