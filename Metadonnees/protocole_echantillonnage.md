@@ -1,6 +1,6 @@
 # [**Analyse de la diversité photosynthétique par le gène psb0**]{.underline}
 
-Ce fichier explique le protocole d’échantillonnage et de traitement des données métagénomiques utilisé dans le cadre de l’analyse de la diversité planctonique photosynthétique de la baie de Mazatlán en utilisant le gène psb0 comme référence. L’objectif étant d’utiliser l’outil métagénomique pour avoir un aperçu rapide, complet et fonctionnel de la diversité photosynthétique et procaryotique de la baie de Mazatlán et du Lagon Urias
+Ce fichier explique le protocole d’échantillonnage et de traitement des données métagénomiques utilisé dans le cadre de l’analyse de la diversité planctonique photosynthétique de la baie de Mazatlán en utilisant le gène psb0 comme référence. L’objectif étant d’utiliser l’outil métagénomique pour avoir un aperçu rapide, complet et fonctionnel de la diversité photosynthétique et procaryotique de la baie de Mazatlán et du Lagon Urias.
 
 [Logiciels et versions nécessaires :]{.underline}
 
